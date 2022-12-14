@@ -12,21 +12,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModelFactory: MainActivityViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        viewModelFactory=MainActivityViewModelFactory(120)
-        viewModel= ViewModelProvider(this,viewModelFactory)[MainActivityViewModel::class.java]
-        binding.countText.text=viewModel.getCurrentCount().toString()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModelFactory = MainActivityViewModelFactory(120)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
+        binding.countText.text = viewModel.getCurrentCount().toString()
         binding.clickHere.setOnClickListener()
         {
-            binding.countText.text=viewModel.getUpdatedCount().toString()
+            binding.countText.text = viewModel.getUpdatedCount().toString()
         }
-
         // add values
-        binding.value.text=viewModel.getTotal().toString()
+        binding.value.text = viewModel.getTotal().toString()
         binding.add.setOnClickListener()
         {
             viewModel.getAddValue(binding.addValue.text.toString().toInt())
-            binding.value.text=viewModel.getTotal().toString()
+            binding.value.text = viewModel.getTotal().toString()
         }
 
     }
